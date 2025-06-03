@@ -1,11 +1,12 @@
 import React from "react";
+import { useState } from "react";
 
 function AddTodo({ setTodos }) {
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [dueDate, setDueDate] = React.useState("");
-  const [priority, setPriority] = React.useState("low");
-  const [completed, setCompleted] = React.useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [priority, setPriority] = useState("low");
+  const [completed, setCompleted] = useState(false);
 
   const resetFields = () => {
     setTitle("");

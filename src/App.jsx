@@ -1,6 +1,9 @@
 import { useState } from "react";
-import Todos from "./components/Todos";
-import AddTodo from "./components/AddTodo";
+import Todos from "./components/todos/Todos";
+import AddTodo from "./components/todos/AddTodo";
+import Idea from "./components/ideas/IdeaList";
+import AddIdea from "./components/ideas/AddIdea";
+import styles from "../src/App.module.css";
 
 const inetialTodos = [
   {
@@ -48,10 +51,22 @@ const inetialTodos = [
 
 function App() {
   const [todos, setTodos] = useState(inetialTodos);
+  const [displayNewIdea, setDisplayNewIdea] = useState(false);
   return (
-    <div>
-      <AddTodo setTodos={setTodos} />
-      <Todos todos={todos} setTodos={setTodos} />
+    <div className={styles.ideaDashboard}>
+      <div>
+        <Idea setNewIdea={setDisplayNewIdea} />
+      </div>
+      <div>
+        {displayNewIdea ? (
+          <AddIdea />
+        ) : (
+          <>
+            <AddTodo setTodos={setTodos} />
+            <Todos todos={todos} setTodos={setTodos} />
+          </>
+        )}
+      </div>
     </div>
   );
 }
